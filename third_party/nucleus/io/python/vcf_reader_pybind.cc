@@ -90,6 +90,5 @@ PYBIND11_MODULE(vcf_reader, m) {
       .def("PythonNext", &VariantIterable::PythonNext, py::arg("variant"))
       .def("Release", &VariantIterable::Release)
       .def("__enter__", [](py::object self) { return self; })
-      .def("__exit__",
-           [](VariantIterable& self, py::args) { return self.PythonExit(); });
+      .def("__exit__", &VariantIterable::PythonExit);
 }
